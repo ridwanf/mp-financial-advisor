@@ -1,0 +1,29 @@
+<view class="chat-container">
+  <scroll-view 
+    class="message-list" 
+    scroll-y="true" 
+    scroll-into-view="{{lastMessageId}}"
+    onScrollToLower="loadMoreMessages">
+    <view class="message-item {{item.isSelf ? 'self' : ''}}" 
+          a:for="{{messages}}" 
+          key="{{item.id}}"
+          id="msg-{{item.id}}">
+      <image class="avatar" src="{{item.avatar}}" />
+      <view class="message-content">
+        <text class="message-text">{{item.content}}</text>
+        <text class="message-time">{{item.time}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="input-area">
+    <input 
+      class="message-input" 
+      type="text" 
+      value="{{inputValue}}" 
+      onInput="onInput"
+      placeholder="Type a message..." 
+    />
+    <button class="send-button" onTap="sendMessage">Send</button>
+  </view>
+</view>
