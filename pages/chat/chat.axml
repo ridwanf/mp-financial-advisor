@@ -14,6 +14,15 @@
         <text class="message-time">{{item.time}}</text>
       </view>
     </view>
+    
+    <view class="message-item" a:if="{{isTyping}}">
+      <image class="avatar" src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png" />
+      <view class="message-content typing-indicator">
+        <view class="typing-bubble"></view>
+        <view class="typing-bubble"></view>
+        <view class="typing-bubble"></view>
+      </view>
+    </view>
   </scroll-view>
 
   <view class="input-area">

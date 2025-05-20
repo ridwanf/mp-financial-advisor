@@ -1,4 +1,4 @@
-import { HERMES_KEY, HERMES_URL } from "../../constants";
+import { HERMES_KEY, HERMES_URL, HERMES_USER } from "../../constants";
 import { request } from "/utils/request";
 
 Page({
@@ -6,6 +6,7 @@ Page({
     messages: [],
     inputValue: '',
     lastMessageId: '',
+    isTyping: false,
     userInfo: {
       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png'
     }
@@ -17,20 +18,13 @@ Page({
       messages: [
         {
           id: 1,
-          content: 'Hello!',
-          time: '10:00',
+          content: 'Halo nama saya Finor, saya akan membantu anda',
+          time: this.formatTime(new Date()),
           avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
           isSelf: false
         },
-        {
-          id: 2,
-          content: 'Hi there!',
-          time: '10:01',
-          avatar: this.data.userInfo.avatar,
-          isSelf: true
-        }
       ],
-      lastMessageId: 'msg-2'
+      lastMessageId: 'msg-1'
     });
   },
 
@@ -59,7 +53,7 @@ Page({
       lastMessageId: `msg-${newMessage.id}`
     });
     console.log(this.data.inputValue)
-     this.fetchAdvice(newMessage.content)
+    this.fetchAdvice(newMessage.content)
   },
 
   receiveMessage(content) {
@@ -85,22 +79,18 @@ Page({
     return `${hours}:${minutes}`;
   },
 
-  loadMoreMessages() {
-    // Implement loading previous messages here
-    my.showToast({
-      content: 'Loading more messages...'
-    });
-  },
-
   async fetchAdvice(message) {
     try {
+      this.setData({ isTyping: true });
+
       const data = {
         inputs: {
           ask: message
         },
-        user: 'ridwanf'
-      }
-      const res = await request({
+        user: HERMES_USER
+      };
+
+      const response = await request({
         url: HERMES_URL,
         method: 'POST',
         data: data,
@@ -109,11 +99,18 @@ Page({
           'Authorization': `Bearer ${HERMES_KEY}`,
         }
       })
-      this.receiveMessage(res.data.data.outputs.result);
-      
-    }
-    catch(error) {
-      console.error(error)
+      if (response.data && response.data.data.outputs) {
+        this.setData({ isTyping: false });
+        console.log(response.data.data.outputs)
+        this.receiveMessage(response.data.data.outputs.result);
+      }
+    } catch (error) {
+      this.setData({ isTyping: false });
+      console.error('Error:', error);
+      my.showToast({
+        type: 'fail',
+        content: 'Failed to get response'
+      });
     }
   }
 
