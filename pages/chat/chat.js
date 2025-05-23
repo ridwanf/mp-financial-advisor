@@ -34,6 +34,26 @@ Page({
     });
   },
 
+  onKeyDown(e) {
+    // Alipay Mini Program: e.detail.keyCode, e.detail.shiftKey
+    // keyCode 13 = Enter
+    if (e.detail.keyCode === 13) {
+      if (e.detail.shiftKey) {
+        // Shift+Enter: tambahkan baris baru
+        this.setData({
+          inputValue: this.data.inputValue + '\n'
+        });
+        // Cegah default agar tidak kirim
+        return false;
+      } else {
+        // Enter tanpa Shift: kirim pesan
+        this.sendMessage();
+        // Cegah default agar tidak tambah baris baru
+        return false;
+      }
+    }
+  },
+
   sendMessage() {
     if (!this.data.inputValue.trim()) return;
 

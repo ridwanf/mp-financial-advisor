@@ -26,12 +26,13 @@
   </scroll-view>
 
   <view class="input-area">
-    <input 
-      class="message-input" 
-      type="text" 
-      value="{{inputValue}}" 
+    <textarea
+      class="message-input"
+      value="{{inputValue}}"
       onInput="onInput"
-      placeholder="Type a message..." 
+      onKeyDown="onKeyDown"
+      placeholder="Type a message..."
+      auto-height="true"
     />
     <button class="send-button" onTap="sendMessage">Send</button>
   </view>
