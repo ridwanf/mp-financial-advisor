@@ -18,7 +18,7 @@ Page({
       messages: [
         {
           id: 1,
-          content: 'Hello',
+          content: 'Hello, I`m Da-Finci your personal advisor. How can I help',
           time: this.formatTime(new Date()),
           avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
           isSelf: false

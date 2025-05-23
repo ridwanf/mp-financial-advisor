@@ -1,0 +1,3 @@
+<view class="container">
+  <image src="/images/DaFinci.png" class="splash-img" mode="aspectFill" />
+</view>
