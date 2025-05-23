@@ -5,32 +5,7 @@
     "pages/profile/profile"
   ],
   "window": {
-    "defaultTitle": "Chat Mini Program",
+    "defaultTitle": "Da-Finci",
     "titleBarColor": "#108ee9"
-  },
-  "tabBar": {
-    "textColor": "#404040",
-    "selectedColor": "#108ee9",
-    "backgroundColor": "#F7F7F7",
-    "items": [
-      {
-        "pagePath": "pages/chat/chat",
-        "name": "Chat",
-        "icon": "assets/chat.png",
-        "activeIcon": "assets/chat_active.png"
-      },
-      {
-        "pagePath": "pages/contacts/contacts",
-        "name": "Contacts",
-        "icon": "assets/contacts.png",
-        "activeIcon": "assets/contacts_active.png"
-      },
-      {
-        "pagePath": "pages/profile/profile",
-        "name": "Profile",
-        "icon": "assets/profile.png",
-        "activeIcon": "assets/profile_active.png"
-      }
-    ]
   }
 }

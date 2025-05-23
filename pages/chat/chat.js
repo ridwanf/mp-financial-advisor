@@ -18,7 +18,7 @@ Page({
       messages: [
         {
           id: 1,
-          content: 'Halo nama saya Finor, saya akan membantu anda',
+          content: 'Hello',
           time: this.formatTime(new Date()),
           avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
           isSelf: false
