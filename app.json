@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/splashScreen/splashScreen",
     "pages/chat/chat",
     "pages/contacts/contacts",
     "pages/profile/profile"
